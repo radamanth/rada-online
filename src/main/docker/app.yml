@@ -1,0 +1,16 @@
+version: '2'
+services:
+    radaonline-app:
+        image: radaonline
+        external_links:
+            - radaonline-mongodb:mongodb
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod
+            - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017
+            - SPRING_DATA_MONGODB_DATABASE=radaOnline
+        ports:
+            - 8080:8080
+    radaonline-mongodb:
+        extends:
+            file: mongodb.yml
+            service: radaonline-mongodb
